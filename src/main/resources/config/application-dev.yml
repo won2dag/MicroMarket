@@ -32,9 +32,9 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:sqlserver://localhost:1433;database=MicMarket
+    url: jdbc:sqlserver://207.148.70.141:1433;database=MicrophoneMarketplace
     username: SA
-    password: yourStrong(!)Password
+    password: 'MilkyWay100#'
     hikari:
       poolName: Hikari
       auto-commit: false
