@@ -32,13 +32,15 @@ spring:
       indent-output: true
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:sqlserver://207.148.70.141:1433;database=MicrophoneMarketplace
+    url: jdbc:sqlserver://207.148.70.141:1433;database=MicrophoneMarketplace;trustServerCertificate=true;
     username: SA
     password: 'MilkyWay100#'
     hikari:
+
       poolName: Hikari
       auto-commit: false
       data-source-properties:
+        connectionTimeout: 50000
         cachePrepStmts: true
         prepStmtCacheSize: 250
         prepStmtCacheSqlLimit: 2048
