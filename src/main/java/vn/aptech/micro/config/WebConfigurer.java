@@ -3,6 +3,7 @@ package vn.aptech.micro.config;
 import static java.net.URLDecoder.decode;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import javax.servlet.*;
@@ -73,7 +74,14 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
      * Resolve path prefix to static resources.
      */
     private String resolvePathPrefix() {
-        String fullExecutablePath = decode(this.getClass().getResource("").getPath(), StandardCharsets.UTF_8);
+        String fullExecutablePath = null;
+        try {
+            fullExecutablePath = decode(this.getClass().getResource("").getPath(), StandardCharsets.UTF_8.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
         String rootPath = Paths.get(".").toUri().normalize().getPath();
         String extractedPath = fullExecutablePath.replace(rootPath, "");
         int extractionEndIndex = extractedPath.indexOf("target/");
